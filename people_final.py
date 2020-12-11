@@ -1,9 +1,9 @@
 import sys
 
-people = {1: {'name': 'John', 'age': '27', 'city': 'London', 'sex': 'Male', 'married': 'Yes', 'phoneNo': '072374753'},
-          2: {'name': 'Marie', 'age': '22', 'city': 'London', 'sex': 'Female', 'married': 'No', 'phoneNo': '072374753'},
-          3: {'name': 'Luna', 'age': '24', 'city': 'Edinburgh', 'sex': 'Female', 'married': 'No', 'phoneNo': '072374753'},
-          4: {'name': 'Peter', 'age': '29', 'city': 'Edinburgh', 'sex': 'Male', 'married': 'Yes', 'phoneNo': '072374753'}}
+people = {1: {'name': 'John', 'age': '27', 'city': 'London', 'sex': 'Male', 'married': 'Yes', 'phoneNo': '0000123455'},
+          2: {'name': 'Marie', 'age': '22', 'city': 'London', 'sex': 'Female', 'married': 'No', 'phoneNo': '0000123456'},
+          3: {'name': 'Luna', 'age': '24', 'city': 'Edinburgh', 'sex': 'Female', 'married': 'No', 'phoneNo': '0000123457'},
+          4: {'name': 'Peter', 'age': '29', 'city': 'Edinburgh', 'sex': 'Male', 'married': 'Yes', 'phoneNo': '00001234568'}}
 
 
 def changes():
