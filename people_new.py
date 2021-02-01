@@ -3,7 +3,7 @@ import sys
 import os
 os.system('clear')
 
-#people = None
+
 people={}
 def menu():
     print('')
@@ -52,6 +52,23 @@ def menu():
 def load_from_file():
     global people
 
+    def load_csv():
+        import csv
+        print('*Load from CSV File*')
+        file_name = input('Input file name: ')
+        while os.path.isfile(f'{file_name}.csv') != True:
+            print(f' File {file_name}.csv is not in a Folder. Enter a correct file name.')
+            file_name = input('Input file name: ')
+        else:
+            with open(f'{file_name}.csv', 'r') as data:
+                for line in csv.reader(data):
+                    people = line
+            #return people
+            menu()
+
+
+
+
     def load_json():
         import json
         print('*Load from JSON File*')
@@ -63,7 +80,7 @@ def load_from_file():
             f = open(f'{file_name}.json', )
             people = json.load(f)
             f.close()
-
+            #menu()
             return people
 
     def load_options():
@@ -104,18 +121,31 @@ def load_from_file():
     return people
 
 def display_people():
+    from prettytable import PrettyTable
     os.system('clear')
     print('* Vimart Database v.1 *')
-    if len(people) == 0:
-        print('No data to display.')
-    else:
 
-        for p_id in people:
-            print('\n Person ID:', p_id)
-            print('___________________')
-            for key, value in people[p_id].items():
-                print(key + ':', value)
-        menu()
+    mytable = PrettyTable(["ID", "Name", "Surname", "Age", "City", "Sex", "Married", "Phone No"])
+    c = 0
+    for x in people:
+        li = [y for x, y in people[x].items()]
+        c += 1
+        li.insert(0, str(c))
+        mytable.add_row(li)
+
+    # print(li)
+    print(mytable)
+
+    # if len(people) == 0:
+    #     print('No data to display.')
+    # else:
+    #
+    #     for p_id in people:
+    #         print('\n Person ID:', p_id)
+    #         print('___________________')
+    #         for key, value in people[p_id].items():
+    #             print(key + ':', value)
+    menu()
 
 
 def changes():
@@ -264,11 +294,19 @@ def add_people():
 
     phone_no = phone_number()
 
+    def email():
+        p_email = input('Email: ').title()
+
+        return p_email
+    pemail = email()
+
+
+
     ile = len(people)
     ile += 1
     ile = str(ile)
 
-    people[ile] = {'name': name, 'age': age, 'surname': surname,  'city': city, 'sex': sex, 'married': marital, 'phoneNo': phone_no}
+    people[ile] = {'name': name, 'age': age, 'surname': surname,  'city': city, 'sex': sex, 'married': marital, 'phoneNo': phone_no, 'email':pemail}
 
     os.system('clear')
     print(f" Data for {people[ile]['name']} in a database")
